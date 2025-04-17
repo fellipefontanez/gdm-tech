@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
+    "framer-motion": "^12.7.4",
     "next": "15.3.0",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -20,7 +21,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.14",
@@ -28,11 +29,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "tailwindcss": "^4",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
     "ts-jest": "^29.3.2",
     "typescript": "^5"
   }

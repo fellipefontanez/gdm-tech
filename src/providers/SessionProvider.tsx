@@ -10,7 +10,6 @@ type Props = {
   session: Session | null;
 };
 
-// Esse componente precisa ficar separado e dentro do <NextAuthProvider>
 function InternalSessionProvider({ children }: { children: ReactNode }) {
   const { data: session, status } = useSession();
 
