@@ -46,7 +46,16 @@ const Button = ({style, action, children, color}: ButtonProps) => {
                 </button>
             )
         default:
-            break;
+            return (
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={action}
+                className={`cursor-pointer px-10 py-2 rounded-md font-semibold shadow-md transition-colors duration-200 bg-[#016ca5] text-white hover:bg-[#015f91] focus:outline-none ${color}`}
+              >
+                {children}
+              </motion.button>
+            );
     }
 }
 

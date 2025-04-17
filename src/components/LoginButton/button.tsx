@@ -19,7 +19,7 @@ const LoginButton = ({session} : LoginButtonProps) => {
     );
   }
   return (
-    <Button action={() => signIn("github")} style="SignIn">Logar</Button>
+    <Button action={() => signIn("github", {callbackUrl: "/home"})} style="SignIn">Logar</Button>
   );
 }
 

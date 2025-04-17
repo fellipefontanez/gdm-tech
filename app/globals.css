@@ -3,9 +3,9 @@
 @import "./normalize.css";
 
 :root {
-  --background: #ffffff;
+  --background: #e3e3e3;
   --foreground: #171717;
-  --header: #F1F3F5;
+  --header: #016ca5;
 }
 
 @theme inline {
@@ -15,7 +15,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -31,4 +31,9 @@ body {
 
 header {
   background: var(--header);
+}
+
+main {
+  width: 100%;
+  height: 100vh;
 }
