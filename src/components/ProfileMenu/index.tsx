@@ -76,7 +76,7 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
             </p>
             <hr className="border-t border-gray-200 mt-0.5 mb-1" />
             <motion.button
-              onClick={() => signOut()}
+              onClick={() => signOut({redirect: true, callbackUrl: "/"})}
               className="self-end block w-min text-left px-4 py-2 text-sm text-black cursor-pointer font-medium rounded hover:bg-red-50 transition-colors duration-200"
               whileHover={{scale: 1.05}}
               whileTap={{scale:.9, opacity:.85}}
