@@ -9,9 +9,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="pt-BR">
       <body>
-        <main>
-          <SessionProvider session={session}>{children}</SessionProvider>
-        </main>
+        <SessionProvider session={session}>{children}</SessionProvider>
       </body>
     </html>
   );
