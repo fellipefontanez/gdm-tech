@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --header: #F1F3F5;
 }
 
 @theme inline {
@@ -16,6 +19,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --header: #2D2D2D;
   }
 }
 
@@ -23,4 +27,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background: var(--header);
 }
