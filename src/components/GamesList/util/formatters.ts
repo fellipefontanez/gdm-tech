@@ -8,7 +8,7 @@ export const associarOdds = (participantKey: string, outcomes: Outcome[], index:
   const similarMatch = outcomes.find((out) => out.participantKey.startsWith(participantKey.slice(0, 4)));
   if (similarMatch) return formatarOdds(similarMatch.payout);
 
-  return formatarOdds(outcomes[index].payout);
+  return formatarOdds(outcomes[index]?.payout ?? 30);
 };
 
 export const formatarOdds = (payout: number): string => {

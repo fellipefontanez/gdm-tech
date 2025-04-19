@@ -1,11 +1,11 @@
 import Header from '@/src/components/Header/header';
 import React from 'react'
 import GamesList from '@/src/components/GamesList/lista';
-import { getListaDadosFromFetch } from './util/formatter';
+import { getAdvantages } from './util/fetchs';
 
 const Home = async () => {
 
-  const response = await getListaDadosFromFetch();
+  const response = await getAdvantages();
 
   return (
     <main>

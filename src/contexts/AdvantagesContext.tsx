@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useMemo, ReactNode } from "react";
 import { AdvantagesV1Response } from "@/src/types/eventResponse.model";
 
 type DataContextType = {
@@ -19,5 +19,7 @@ export function useDataContext() {
 export function DataProvider({ children }: { children: ReactNode }) {
   const [cachedData, setCachedData] = useState<AdvantagesV1Response | null>(null);
 
-  return <DataContext.Provider value={{ cachedData, setCachedData }}>{children}</DataContext.Provider>;
+  const value = useMemo(() => ({ cachedData, setCachedData }), [cachedData]);
+
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }

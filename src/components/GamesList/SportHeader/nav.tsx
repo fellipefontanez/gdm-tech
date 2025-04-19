@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 
 interface SportNavProps {
   esporte: string;
+  action: ()=>any;
+  routeParam: string;
 }
 
-const SportNav = ({ esporte }: SportNavProps) => {
+const SportNav = ({ esporte, action, routeParam }: SportNavProps) => {
   return (
     <motion.nav
       initial={{ opacity: 0, x: 20 }}
@@ -24,7 +26,9 @@ const SportNav = ({ esporte }: SportNavProps) => {
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 80 }}
       >
-        <button className="ml-[-4rem] z-10 relative px-4 py-2 cursor-pointer">Ver tudo</button>
+        <button className="ml-[-4rem] z-10 relative px-4 py-2 cursor-pointer" onClick={action}>
+          {routeParam ? "Voltar" : "Ver tudo"}
+        </button>
       </motion.div>
     </motion.nav>
   );
