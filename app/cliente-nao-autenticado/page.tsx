@@ -28,7 +28,6 @@ const ClienteNaoLogadoPage = () => {
   return (
     <main>
       <div className="h-full flex flex-col justify-between">
-        <Header />
         <section className="flex w-full h-full justify-center items-center">
           <motion.div
             className="flex flex-col justify-center items-center border w-[350px] max-w-[90%] h-[400px] rounded-xl p-3"
