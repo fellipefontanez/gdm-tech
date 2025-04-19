@@ -9,27 +9,19 @@ interface FavoriteButtonProps {
 }
 
 const FavoriteButton = ({ esporte }: FavoriteButtonProps) => {
-  const { data: session, update } = useSession();
+  const { data: session } = useSession();
   const { cachedData, addFavorite, removeFavorite } = useFavoritosContext();
 
   const isFavorite = cachedData?.includes(esporte) ?? false;
 
   const toggleFavorite = () => {
-    if (!session) return;
+    if (!session?.user?.email) return;
 
-    const currentFavorites = (session.user as any)?.favorites ?? [];
-    const isAlreadyFavorite = currentFavorites.includes(esporte);
-
-    const updatedFavorites = isAlreadyFavorite ? currentFavorites.filter((item: string) => item !== esporte) : [...currentFavorites, esporte];
-
-    update({
-      user: {
-        ...session.user,
-        favorites: updatedFavorites,
-      },
-    });
-
-    isAlreadyFavorite ? removeFavorite(esporte) : addFavorite(esporte);
+    if (isFavorite) {
+      removeFavorite(esporte);
+    } else {
+      addFavorite(esporte);
+    }
   };
 
   return (

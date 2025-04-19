@@ -20,44 +20,49 @@ export function useFavoritosContext() {
 
 export function FavoritosProvider({ children }: { children: ReactNode }) {
   const [cachedData, setCachedData] = useState<string[] | null>(null);
-  const { data: session, update } = useSession();
+  const { data: session } = useSession();
 
   useEffect(() => {
-    if (session?.user) {
-      const favorites = (session.user as any).favorites ?? [];
-      setCachedData(favorites);
+    if (session?.user?.email) {
+      fetch(`/api/protected/favoritos?email=${session.user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.favoritos) {
+            setCachedData(data.favoritos);
+          }
+        });
     }
   }, [session]);
 
-  const addFavorite = (newFavorite: string) => {
-    const currentFavorites = (session as any)?.user?.favorites || [];
-    if (!currentFavorites.includes(newFavorite)) {
-      const updatedFavorites = [...currentFavorites, newFavorite];
-      update({
-        user: {
-          ...session?.user,
-          favorites: updatedFavorites,
-        },
-      });
-      setCachedData(updatedFavorites);
-    }
+  const addFavorite = async (newFavorite: string) => {
+    const updatedFavorites = [...(cachedData ?? []), newFavorite];
+    setCachedData(updatedFavorites);
+
+    await fetch("/api/protected/favoritos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: session?.user?.email,
+        favoritos: updatedFavorites,
+      }),
+    });
   };
 
-  const removeFavorite = (favorite: string) => {
-    const currentFavorites = (session as any)?.user?.favorites || [];
-    if (currentFavorites.includes(favorite)) {
-      const updatedFavorites = currentFavorites.filter((item: string) => item !== favorite);
-      update({
-        user: {
-          ...session?.user,
-          favorites: updatedFavorites,
-        },
-      });
-      setCachedData(updatedFavorites);
-    }
+  const removeFavorite = async (favorite: string) => {
+    const updatedFavorites = (cachedData ?? []).filter((item) => item !== favorite);
+    setCachedData(updatedFavorites);
+
+    await fetch("/api/protected/favoritos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: session?.user?.email,
+        favoritos: updatedFavorites,
+      }),
+    });
   };
 
-  const value = useMemo(() => ({ cachedData, setCachedData, addFavorite, removeFavorite }), [cachedData, session]);
+  const value = useMemo(() => ({ cachedData, setCachedData, addFavorite, removeFavorite }), [cachedData]);
 
   return <FavoritosContext.Provider value={value}>{children}</FavoritosContext.Provider>;
 }
