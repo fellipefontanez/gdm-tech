@@ -9,7 +9,6 @@ const Home = async () => {
 
   return (
     <main>
-      <Header />
       <section className='flex justify-center py-8'>
         <GamesList data={response} />
       </section>

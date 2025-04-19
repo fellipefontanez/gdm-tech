@@ -43,18 +43,18 @@ export async function apiService<T = any>({ endpoint, method = 'GET', body, reqO
 
     const urlBase = isClient ? BASE_URL_LOCAL : BASE_URL;
 
-    const response = await fetch(`${urlBase}${endpoint.replaceAll("undefined", "api")}`, options);
+    console.log(`${urlBase}${endpoint}`, options);
+
+    const response = await fetch(`${urlBase}${endpoint}`, options);
+
+    console.log(response)
 
     if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Erro ${response.status}: ${errorText}`);
     }
 
-    try{
-        return response.json();
-    } catch(err){
-        throw new Error(`Erro`);
-    }
+    return response.json();
 
 }
 

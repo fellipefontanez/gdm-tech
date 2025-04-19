@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiService } from '@/src/services/ApiService';
-import { ApiResponse, Sport } from '@/src/types/reponses.model';
-import { AdvantagesResponse } from '@/src/types/eventResponse.model';
+import { ApiResponse } from '@/src/types/reponses.model';
+import { AdvantagesV1Response } from '@/src/types/eventResponse.model';
 import { NextResponse } from 'next/server';
 
 const a: any = {
@@ -19967,11 +19967,11 @@ const a: any = {
     }
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse<ApiResponse<AdvantagesResponse[]>>) {  
-    return NextResponse.json({message: 'ok', data: a});
+export async function GET(req: NextApiRequest, res: NextApiResponse<ApiResponse<AdvantagesV1Response>>) {  
+    return NextResponse.json({ message: 'ok', data: a });
     try {
-        const data = await apiService<Sport[]>('/sports');
-        res.status(200).json(data);
+        const data = await apiService<AdvantagesV1Response>('/sports');
+        res.status(200).json({ message: 'ok', data });
     } catch (error: any) {
         if(error instanceof Error) res.status(500).json({error: error.message});
     }
