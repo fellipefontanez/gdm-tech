@@ -1,6 +1,7 @@
 "use client";
 import React, { memo } from "react";
 import { motion } from "framer-motion";
+import FavoriteButton from "./favorite";
 
 interface SportNavProps {
   esporte: string;
@@ -14,9 +15,12 @@ const SportNav = ({ esporte, action, routeParam }: SportNavProps) => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="bg-blue-900 pl-4 text-white font-semibold font-sans flex justify-between items-center w-full"
+      className="bg-blue-900 pl-2 text-white font-semibold font-sans flex justify-between items-center w-full"
     >
-      <h3 className="italic text-2xl tracking-widest cursor-default">{esporte}</h3>
+      <h3 className="italic text-2xl tracking-widest cursor-default flex items-center gap-1">
+        <FavoriteButton esporte={esporte} />
+        {esporte}
+      </h3>
       <motion.div
         className="h-10 w-fit bg-[#1e293b] text-nowrap pl-2 flex items-center cursor-pointer"
         style={{

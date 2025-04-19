@@ -15,7 +15,6 @@ export default tsEslint.config(
       "@next/next": nextPlugin,
     },
     rules: {
-      // Permite explicitamente o uso de 'any' com comentário de justificativa
       "@typescript-eslint/no-explicit-any": [
         "warn",
         {
@@ -23,8 +22,6 @@ export default tsEslint.config(
           ignoreRestArgs: false,
         },
       ],
-
-      // Outras regras recomendadas
       "@typescript-eslint/no-unused-vars": "warn",
       "@next/next/no-html-link-for-pages": "error",
     },

@@ -4,6 +4,7 @@ import { authOptions } from "@/src/lib/auth";
 import "./globals.css";
 import { DataProvider } from "@/src/contexts/AdvantagesContext";
 import Header from "@/src/components/Header/header";
+import { FavoritosProvider } from "@/src/contexts/FavoritosContext";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
@@ -13,8 +14,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <SessionProvider session={session}>
           <DataProvider>
-            <Header />
-            {children}
+            <FavoritosProvider>
+              <Header />
+              {children}
+            </FavoritosProvider>
           </DataProvider>
         </SessionProvider>
       </body>

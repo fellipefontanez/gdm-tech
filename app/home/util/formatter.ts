@@ -47,7 +47,7 @@ export const formatName = (esporte: string): string => {
         "BASEBALL": "Beisebol",
         "VOLEYBALL": "Vôlei",
         "AMERICAN_FOOTBALL": "Futebol Americano",
-        "AUSTRALIAN_RULES_FOOTBALL": "Futebol Australiano",
+        "AUSTRALIAN_RULES_FOOTBALL": "Futebol AU",
     }
     return formatador[esporte] ?? esporte;
 }
