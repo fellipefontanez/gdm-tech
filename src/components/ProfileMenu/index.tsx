@@ -44,7 +44,7 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 px-5 py-4 origin-top flex flex-col"
+            className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 px-5 pt-4 pb-2 origin-top flex flex-col"
             initial={{
               opacity: 0,
               scaleY: 0,
@@ -74,7 +74,7 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
             <p className="text-sm text-gray-700 leading-tight tracking-wide mb-3">
               Bem-vindo, <span className="font-semibold">{userName}</span>
             </p>
-            <hr className="border-t border-gray-200 mt-0.5 mb-1" />
+            <hr className="border-t border-gray-200 mt-0.5 mb-2" />
             <motion.button
               onClick={() => signOut({redirect: true, callbackUrl: "/"})}
               className="self-end block w-min text-left px-4 py-2 text-sm text-black cursor-pointer font-medium rounded hover:bg-red-50 transition-colors duration-200"
