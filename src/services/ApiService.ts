@@ -43,11 +43,7 @@ export async function apiService<T = any>({ endpoint, method = 'GET', body, reqO
 
     const urlBase = isClient ? BASE_URL_LOCAL : BASE_URL;
 
-    console.log(`${urlBase}${endpoint}`, options);
-
     const response = await fetch(`${urlBase}${endpoint}`, options);
-
-    console.log(response)
 
     if (!response.ok) {
         const errorText = await response.text();

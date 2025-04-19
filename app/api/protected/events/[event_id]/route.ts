@@ -83,7 +83,6 @@ const a: EventsResponse = {
 }
 
 export async function GET(req: NextApiRequest, res: NextApiResponse<ApiResponse<EventsResponse>>) {
-    console.log("bateu aqui")
     return NextResponse.json({message: 'ok', data: a});
     try {
         const { event_id } = req.query;
