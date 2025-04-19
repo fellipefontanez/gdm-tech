@@ -1,7 +1,17 @@
-# docker-compose.dev.yml
 version: '3.8'
 
 services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network  # Certifique-se de que o MongoDB esteja na rede app-network
+
   app:
     build:
       context: .
@@ -13,4 +23,17 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/fellipebot  # Conectando ao MongoDB via hostname 'mongodb'
     command: npm run dev
+    depends_on:
+      - mongodb
+    networks:
+      - app-network  # Garantir que o app também esteja na mesma rede
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge  # Certifique-se de usar a rede bridge
