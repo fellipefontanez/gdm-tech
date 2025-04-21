@@ -1,32 +1,35 @@
-import { getServerSession } from "next-auth";
 import { SessionProvider } from "@/src/providers/SessionProvider";
-import { authOptions } from "@/src/lib/auth";
-import "./globals.css";
 import { DataProvider } from "@/src/contexts/AdvantagesContext";
-import Header from "@/src/components/Header/header";
 import { FavoritosProvider } from "@/src/contexts/FavoritosContext";
 import { LoaderProvider } from "@/src/contexts/LoaderContext";
+import Header from "@/src/components/Header/header";
 import GlobalLoader from "@/src/components/Loader/LoaderGlobal";
-import Footer from "@/src/components/Footer/Footer";
+import "./globals.css";
+import { getUserOnboarding } from "@/src/util/getUserOnboarding";
+import { OnboardingProvider } from "@/src/contexts/OnboardingContext";
+import WelcomeModal from "@/src/components/WelcomeModal/Modal";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
+  const { session, hasOnboarded } = await getUserOnboarding();
 
   return (
     <html lang="pt-BR">
       <head>
-        <meta name="theme-color" content="#016ca5"></meta>
-        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+        <meta name="theme-color" content="#016ca5" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body>
         <SessionProvider session={session}>
           <DataProvider>
             <FavoritosProvider>
               <LoaderProvider>
-                <GlobalLoader />
-                <Header />
-                <main className="relative pt-[74px]">{children}</main>
+                <OnboardingProvider hasOnboarded={hasOnboarded}>
+                  <WelcomeModal hasOnboarded={hasOnboarded} />
+                  <GlobalLoader />
+                  <Header />
+                  <main className="relative pt-[74px]">{children}</main>
+                </OnboardingProvider>
               </LoaderProvider>
             </FavoritosProvider>
           </DataProvider>
