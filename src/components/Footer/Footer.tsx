@@ -32,7 +32,7 @@ const Footer = () => {
 
           <motion.div className="flex flex-col gap-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.25 }}>
             <p className="font-bold text-2xl">Sobre o Projeto</p>
-            <p>Este é um projeto pessoal de Fellipe Fontanez, criado para fins de aprendizado e desenvolvimento. Não é um site real de apostas.</p>
+            <p>Este é um projeto pessoal de Fellipe Fontanez. Não é um site real de apostas.</p>
           </motion.div>
         </div>
 
