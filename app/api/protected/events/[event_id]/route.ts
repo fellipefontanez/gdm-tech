@@ -27,7 +27,6 @@ export async function GET(req: NextRequest, { params }: { params: { event_id: st
 
         return NextResponse.json(response);
     } catch (error: any) {
-        console.error('Erro na API:', error);
         return NextResponse.json({ message: 'Erro ao buscar evento' }, { status: 500 });
     }
 }
