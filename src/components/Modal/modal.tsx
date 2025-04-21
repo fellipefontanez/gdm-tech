@@ -24,7 +24,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
       onClick={fecharSeClicarFora}
     >
       <div
-        className="bg-white p-4 rounded-md w-[380px] h-max-[300px] relative mt-8 md:mt-0 md:rounded-lg overflow-y-scroll limite"
+        className="bg-white p-4 rounded-md w-[420px] h-max-[300px] relative mt-8 md:mt-0 md:rounded-lg overflow-y-scroll limite"
         onClick={(e) => e.stopPropagation()}
       >
         <button onClick={() => onClose()} className="absolute top-2 right-2 text-gray-700 font-bold">

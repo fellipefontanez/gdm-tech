@@ -21,7 +21,7 @@ export function useFavoritosContext() {
 }
 
 export function FavoritosProvider({ children }: { children: ReactNode }) {
-  const [cachedData, setCachedData] = useState<string[] | null>(null);
+  const [cachedData, setCachedDataState] = useState<string[] | null>(null);
   const [showOnlyFavCategories, setShowOnlyFavCategories] = useState<boolean>(false);
   const { data: session } = useSession();
 
@@ -31,7 +31,7 @@ export function FavoritosProvider({ children }: { children: ReactNode }) {
         .then((res) => res.json())
         .then((data) => {
           if (data?.favoritos) {
-            setCachedData(data.favoritos);
+            setCachedDataState(data.favoritos);
           }
         });
     }
@@ -39,7 +39,7 @@ export function FavoritosProvider({ children }: { children: ReactNode }) {
 
   const addFavorite = async (newFavorite: string) => {
     const updatedFavorites = [...(cachedData ?? []), newFavorite];
-    setCachedData(updatedFavorites);
+    setCachedDataState(updatedFavorites);
 
     await fetch("/api/protected/favoritos", {
       method: "POST",
@@ -51,9 +51,22 @@ export function FavoritosProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const setCachedData = async (favoritos: string[]) => {
+    setCachedDataState(favoritos);
+
+    await fetch("/api/protected/favoritos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: session?.user?.email,
+        favoritos: favoritos,
+      }),
+    });
+  };
+
   const removeFavorite = async (favorite: string) => {
     const updatedFavorites = (cachedData ?? []).filter((item) => item !== favorite);
-    setCachedData(updatedFavorites);
+    setCachedDataState(updatedFavorites);
 
     await fetch("/api/protected/favoritos", {
       method: "POST",

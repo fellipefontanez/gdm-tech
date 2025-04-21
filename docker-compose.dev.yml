@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:6.0
     container_name: mongodb
     restart: always
     ports:
@@ -10,25 +10,25 @@ services:
     volumes:
       - mongo_data:/data/db
     networks:
-      - app-network  # Certifique-se de que o MongoDB esteja na rede app-network
+      - app-network # Certifique-se de que o MongoDB esteja na rede app-network
 
   app:
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - MONGODB_URI=mongodb://mongodb:27017/fellipebot  # Conectando ao MongoDB via hostname 'mongodb'
+      - MONGODB_URI=mongodb://mongodb:27017/fellipebot # Conectando ao MongoDB via hostname 'mongodb'
     command: npm run dev
     depends_on:
       - mongodb
     networks:
-      - app-network  # Garantir que o app também esteja na mesma rede
+      - app-network # Garantir que o app também esteja na mesma rede
 
 volumes:
   mongo_data:
@@ -36,4 +36,4 @@ volumes:
 
 networks:
   app-network:
-    driver: bridge  # Certifique-se de usar a rede bridge
+    driver: bridge # Certifique-se de usar a rede bridge

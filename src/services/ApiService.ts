@@ -55,7 +55,7 @@ export async function apiService<T = any>({ endpoint, method = 'GET', body, reqO
 }
 
 export async function apiChamadaServer<T = any>(props: RequestProps): Promise<T> {
-    return apiService<T>(props);
+    return apiService<T>({ ...props, isClient: false });
 }
 
 export async function apiChamadaClient<T = any>(props: RequestProps): Promise<T> {

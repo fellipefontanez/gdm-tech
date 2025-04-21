@@ -16,11 +16,21 @@ const MarketList: React.FC<MarketListProps> = ({ markets }) => {
     MONEYLINE: "Vencedor da Partida",
     POINT_SPREAD: "Handicap de Pontos",
     POINT_TOTAL: "Total de Pontos",
+    BOTH_TEAMS_TO_SCORE: "Os dois times marcam",
+    MONEYLINE_3WAY: "Moneyline de 3 vias",
+    INDIVIDUAL_POINT_TOTAL: "Pontos individual",
+    FIRST_5_INNINGS: "Primeiras 5 entradas",
   };
 
   const marketSegmentDictionary: { [key: string]: string } = {
     FULL_MATCH: "Partida Inteira",
     REGULATION_TIME: "Tempo Regulamentar",
+    HALF_1: "Primeiro tempo",
+    HALF_2: "Segundo tempo",
+    QUARTER_1: "1° Quarto",
+    QUARTER_2: "2° Quarto",
+    QUARTER_3: "3° Quarto",
+    QUARTER_4: "4° Quarto",
   };
 
   const segmentColorMap: Record<string, string> = {
