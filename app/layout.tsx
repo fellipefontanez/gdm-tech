@@ -5,6 +5,8 @@ import "./globals.css";
 import { DataProvider } from "@/src/contexts/AdvantagesContext";
 import Header from "@/src/components/Header/header";
 import { FavoritosProvider } from "@/src/contexts/FavoritosContext";
+import { LoaderProvider } from "@/src/contexts/LoaderContext";
+import GlobalLoader from "@/src/components/Loader/LoaderGlobal";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
@@ -20,8 +22,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SessionProvider session={session}>
           <DataProvider>
             <FavoritosProvider>
-              <Header />
-              <main className="relative pt-[74px]">{children}</main>
+              <LoaderProvider>
+                <GlobalLoader />
+                <Header />
+                <main className="relative pt-[74px]">{children}</main>
+              </LoaderProvider>
             </FavoritosProvider>
           </DataProvider>
         </SessionProvider>

@@ -42,7 +42,7 @@ const BarraDeFavoritos = () => {
                     boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
                   }}
                 >
-                  <div className="p-2 mr-3 flex items-center justify-center bg-gray-200 rounded-l-md">
+                  <div className="p-2 mr-3 flex items-center justify-center  rounded-l-md">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                       <circle cx="3" cy="3" r="1.5" />
                       <circle cx="3" cy="10" r="1.5" />
@@ -82,7 +82,7 @@ const BarraDeFavoritos = () => {
         </div>
       </div>
 
-      <div className="md:hidden fixed top-[74px] left-0 right-0 bg-white shadow-md z-50">
+      <div className="md:hidden fixed top-[74px] left-0 right-0 bg-white shadow-md z-40">
         <div className="flex justify-between items-center p-4">
           <h3 className="text-lg font-bold text-gray-800">Favoritos</h3>
           <button onClick={() => setIsOpen(!isOpen)} className="text-sm text-blue-600 font-medium">
@@ -92,7 +92,7 @@ const BarraDeFavoritos = () => {
 
         {isOpen && (
           <div className="p-2 border-t border-gray-200 max-h-[300px] overflow-y-auto">
-            <Reorder.Group axis="y" values={itens} onReorder={setItens} className="space-y-2">
+            <Reorder.Group axis="y" values={itens} onReorder={reorderList} className="mb-8 space-y-2">
               {itens.length ? (
                 itens.map((item) => (
                   <Reorder.Item
@@ -104,7 +104,7 @@ const BarraDeFavoritos = () => {
                       boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
                     }}
                   >
-                    <div className="p-2 mr-3 flex items-center justify-center bg-gray-200 rounded-l-md">
+                    <div className="p-2 mr-3 flex items-center justify-center  rounded-l-md">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                         <circle cx="3" cy="3" r="1.5" />
                         <circle cx="3" cy="10" r="1.5" />
@@ -126,6 +126,21 @@ const BarraDeFavoritos = () => {
                 <p>Nenhum favorito adicionado</p>
               )}
             </Reorder.Group>
+            <button
+              type="button"
+              onClick={() => {
+                console.log(showOnlyFavCategories);
+                setShowOnlyFavCategories(!showOnlyFavCategories);
+              }}
+              className={`mt-8 cursor-pointer w-full text-sm font-medium px-4 py-2 rounded-md text-white transition-colors duration-200 focus:outline-none focus:ring-2
+                    ${
+                      showOnlyFavCategories
+                        ? "bg-emerald-600 hover:bg-emerald-500 focus:ring-emerald-400"
+                        : "bg-neutral-800 hover:bg-neutral-700 focus:ring-neutral-500"
+                    }`}
+            >
+              {showOnlyFavCategories ? "Ver todas as categorias" : "Ver apenas categorias favoritas"}
+            </button>
           </div>
         )}
       </div>
