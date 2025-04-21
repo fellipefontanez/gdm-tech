@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 
 const BASE_URL = 'https://sportsbook-api2.p.rapidapi.com';
-const BASE_URL_LOCAL = process.env.BASE_URL_SERVIDOR || "http://localhost:3000/api";
+const BASE_URL_LOCAL = process.env.BASE_URL_SERVIDOR || "http://192.168.0.6:3000/api";
 
 const headers = {
     'x-rapidapi-host': 'sportsbook-api2.p.rapidapi.com',

@@ -11,6 +11,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="pt-BR">
+      <head>
+        <meta name="theme-color" content="#016ca5"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+      </head>
       <body>
         <SessionProvider session={session}>
           <DataProvider>
