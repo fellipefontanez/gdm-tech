@@ -1,32 +1,39 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { apiService } from '@/src/services/ApiService';
-import { EventsResponse } from '@/src/types/eventDeatail.model';
-import { ApiResponse } from '@/src/types/reponses.model';
+import { NextRequest, NextResponse } from 'next/server'
+import { apiService } from '@/src/services/ApiService'
+import { EventsResponse } from '@/src/types/eventDeatail.model'
+import { ApiResponse } from '@/src/types/reponses.model'
 
-export async function GET(req: NextRequest, { params }: { params: { event_id: string } }) {
+export const dynamic = 'force-dynamic'
+
+export async function GET(
+    request: NextRequest,
+    { params }: { params: { event_id: string } }
+) {
     try {
-        const event_id = params.event_id;
-        const endpoint = `/v0/events/${event_id}`;
+        const endpoint = `/v0/events/${params.event_id}`
 
         const headers = {
             'x-rapidapi-host': 'sportsbook-api2.p.rapidapi.com',
             'x-rapidapi-key': process.env.RAPIDAPI_KEY ?? '',
-        };
+        }
 
         const data = await apiService<EventsResponse>({
             endpoint,
             method: 'GET',
             body: null,
             reqOptions: { headers },
-        });
+        })
 
-        const response: ApiResponse<EventsResponse> = {
+        return NextResponse.json({
             message: 'ok',
             data,
-        };
+        } satisfies ApiResponse<EventsResponse>)
 
-        return NextResponse.json(response);
-    } catch (error: any) {
-        return NextResponse.json({ message: 'Erro ao buscar evento' }, { status: 500 });
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Erro ao buscar evento'
+        return NextResponse.json(
+            { message: errorMessage },
+            { status: 500 }
+        )
     }
 }

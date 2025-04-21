@@ -34,7 +34,7 @@
     "@types/lodash": "^4.17.16",
     "@types/mongodb": "^4.0.6",
     "@types/next-auth": "^3.13.0",
-    "@types/node": "^20",
+    "@types/node": "^20.17.30",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
@@ -45,6 +45,7 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
     "ts-jest": "^29.3.2",
-    "typescript": "^5"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0"
   }
 }
