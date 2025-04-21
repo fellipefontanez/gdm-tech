@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 
 const BASE_URL = 'https://sportsbook-api2.p.rapidapi.com';
-const BASE_URL_LOCAL = process.env.BASE_URL_SERVIDOR;
+const BASE_URL_LOCAL = process.env.BASE_URL_SERVIDOR || "http://localhost:3000/api";
 
 const headers = {
     'x-rapidapi-host': 'sportsbook-api2.p.rapidapi.com',
@@ -60,5 +60,5 @@ export async function apiChamadaServer<T = any>(props: RequestProps): Promise<T>
 
 export async function apiChamadaClient<T = any>(props: RequestProps): Promise<T> {
     const isClient: boolean = true;
-    return apiService<T>({...props, isClient});
+    return apiService<T>({ ...props, isClient });
 }

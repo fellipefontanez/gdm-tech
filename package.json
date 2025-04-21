@@ -15,6 +15,7 @@
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
     "@next/font": "^14.2.15",
+    "@tailwindcss/container-queries": "^0.1.1",
     "framer-motion": "^12.7.4",
     "lodash": "^4.17.21",
     "mongodb": "^6.15.0",

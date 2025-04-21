@@ -8,6 +8,10 @@
   --header: #016ca5;
 }
 
+.limite {
+  max-height: 70vh !important;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -19,7 +23,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --header: #2D2D2D;
+    --header: #2d2d2d;
   }
 }
 
