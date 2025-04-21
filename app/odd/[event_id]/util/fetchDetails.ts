@@ -8,6 +8,12 @@ export async function getDetails(event_id: string) {
     return formatEvent(response.data);
 }
 
+export async function getDetailsSSR(event_id: string) {
+    const endpoint = `/v0/events/${event_id}`;
+    const res = await apiChamadaServer<EventsResponse>({ endpoint, method: "GET" });
+    return formatEvent(res);
+}
+
 const formatEvent = (data: EventsResponse) => {
     const event = data.events[0];
     if (event?.name) event.name = event.name.replaceAll("@", "X");

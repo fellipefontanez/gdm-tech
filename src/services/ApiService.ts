@@ -1,4 +1,5 @@
 import { getSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 const BASE_URL = 'https://sportsbook-api2.p.rapidapi.com';
 const BASE_URL_LOCAL = process.env.BASE_URL_SERVIDOR || "http://192.168.0.6:3000/api";
@@ -46,8 +47,7 @@ export async function apiService<T = any>({ endpoint, method = 'GET', body, reqO
     const response = await fetch(`${urlBase}${endpoint}`, options);
 
     if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Erro ${response.status}: ${errorText}`);
+        redirect("/");
     }
 
     return response.json();
