@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import GamesList from "@/src/components/GamesList/lista";
 import { getAdvantages } from "./util/fetchs";
