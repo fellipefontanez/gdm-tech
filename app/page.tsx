@@ -1,3 +1,9 @@
+import HeroBanner from "@/src/components/HeroBanner/banner";
+
 export default function Home() {
-  return <></>;
+  return (
+    <section>
+      <HeroBanner />
+    </section>
+  );
 }
