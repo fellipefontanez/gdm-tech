@@ -10,8 +10,11 @@ import { useSearchParams } from "next/navigation";
 import { getListaCorreta } from "./util/service";
 import { useRouter } from "next/navigation";
 import { getDetails } from "@/app/odd/[event_id]/util/fetchDetails";
+import { useFavoritosContext } from "@/src/contexts/FavoritosContext";
 import Modal from "../Modal/modal";
 import OddDetails from "../OddDetails/OddDetalhada";
+import { filtrarEOrdenarEsportes } from "./util/filtrarOrdenarEsportes";
+import { Participant } from "@/src/types/eventDeatail.model";
 
 type Props = {
   data: AdvantagesV1Response;
@@ -41,6 +44,7 @@ const GamesList = ({ data }: Props) => {
   const searchParams = useSearchParams();
   const sportParam = searchParams.get("sport");
   const router = useRouter();
+  const { cachedData: favoritos, showOnlyFavCategories } = useFavoritosContext();
 
   const openModal = async (eventId: string) => {
     setLoading(true);
@@ -67,7 +71,7 @@ const GamesList = ({ data }: Props) => {
   return (
     <>
       <section className="flex flex-col w-full max-w-[700px] gap-3">
-        {Object.entries(lista).map(([esporte, vantagens]) => {
+        {filtrarEOrdenarEsportes(lista, favoritos, showOnlyFavCategories).map(([esporte, vantagens]) => {
           const esporteFormatado = formatName(esporte);
           return (
             <section key={esporte} className="w-full">
@@ -92,7 +96,7 @@ const GamesList = ({ data }: Props) => {
                         </div>
 
                         <div className="mt-1 text-sm text-gray-600">
-                          {context.eventParticipants.map((team, i) => {
+                          {context.eventParticipants.map((team: Participant, i: number) => {
                             const payout = associarOdds(team.key, outcomes, i);
                             return (
                               <div key={team.key} className="flex justify-between">
@@ -119,6 +123,14 @@ const GamesList = ({ data }: Props) => {
       <Modal isOpen={!!selectedEventId} onClose={closeModal}>
         {loading && <p className="text-center">Carregando...</p>}
         {eventDetails && <OddDetails event={eventDetails} isModal={true} />}
+        {!!selectedEventId && !loading && (
+          <p
+            onClick={() => router.push(`/odd/${selectedEventId}`)}
+            className="mt-4 text-center cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Ver página
+          </p>
+        )}
       </Modal>
     </>
   );

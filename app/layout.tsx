@@ -21,7 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <DataProvider>
             <FavoritosProvider>
               <Header />
-              {children}
+              <main className="relative pt-[74px]">{children}</main>
             </FavoritosProvider>
           </DataProvider>
         </SessionProvider>

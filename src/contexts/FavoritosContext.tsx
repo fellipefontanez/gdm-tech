@@ -8,6 +8,8 @@ type FavoritosContextType = {
   setCachedData: (data: string[]) => void;
   addFavorite: (newFavorite: string) => void;
   removeFavorite: (favorite: string) => void;
+  showOnlyFavCategories: boolean | undefined;
+  setShowOnlyFavCategories: (deveMostrar: boolean) => void;
 };
 
 const FavoritosContext = createContext<FavoritosContextType | undefined>(undefined);
@@ -20,6 +22,7 @@ export function useFavoritosContext() {
 
 export function FavoritosProvider({ children }: { children: ReactNode }) {
   const [cachedData, setCachedData] = useState<string[] | null>(null);
+  const [showOnlyFavCategories, setShowOnlyFavCategories] = useState<boolean>(false);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -62,7 +65,10 @@ export function FavoritosProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const value = useMemo(() => ({ cachedData, setCachedData, addFavorite, removeFavorite }), [cachedData]);
+  const value = useMemo(
+    () => ({ cachedData, setCachedData, addFavorite, removeFavorite, showOnlyFavCategories, setShowOnlyFavCategories }),
+    [cachedData, showOnlyFavCategories]
+  );
 
   return <FavoritosContext.Provider value={value}>{children}</FavoritosContext.Provider>;
 }
