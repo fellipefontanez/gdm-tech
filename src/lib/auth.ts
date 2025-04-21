@@ -9,23 +9,14 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, account, trigger, session }) {
+        async jwt({ token, account }) {
             if (account) {
                 token.accessToken = account.access_token;
-                token.favorites = [];
             }
-            if (trigger === "update" && session?.user?.favorites) {
-                token.favorites = session.user.favorites;
-            }
-
             return token;
         },
-
         async session({ session, token }) {
             session.accessToken = token.accessToken as string;
-            if (session.user) {
-                (session.user as any).favorites = token.favorites || [];
-            }
             return session;
         },
     },
