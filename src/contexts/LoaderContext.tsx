@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
 type LoaderContextType = {
   isLoading: boolean;
@@ -16,13 +16,17 @@ export const LoaderProvider = ({ children }: { children: React.ReactNode }) => {
   const startLoading = () => setIsLoading(true);
   const stopLoading = () => setIsLoading(false);
 
-  return <LoaderContext.Provider value={{ isLoading, startLoading, stopLoading }}>{children}</LoaderContext.Provider>;
+  return (
+    <LoaderContext.Provider value={{ isLoading, startLoading, stopLoading }}>
+      {children}
+    </LoaderContext.Provider>
+  );
 };
 
 export const useLoader = () => {
   const context = useContext(LoaderContext);
   if (!context) {
-    throw new Error("useLoader deve ser usado dentro de um LoaderProvider");
+    throw new Error('useLoader deve ser usado dentro de um LoaderProvider');
   }
   return context;
 };

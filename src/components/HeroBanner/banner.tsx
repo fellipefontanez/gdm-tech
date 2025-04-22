@@ -1,8 +1,13 @@
-"use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+'use client';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-const texts = ["Seu palpite, sua vitória", "Aqui o jogo é real", "Transforme apostas em ganhos", "Ganhe jogando com inteligência"];
+const texts = [
+  'Seu palpite, sua vitória',
+  'Aqui o jogo é real',
+  'Transforme apostas em ganhos',
+  'Ganhe jogando com inteligência',
+];
 
 const textVariants = {
   initial: {
@@ -32,7 +37,7 @@ export default function HeroBanner() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % texts.length);
+      setIndex(prev => (prev + 1) % texts.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -41,9 +46,10 @@ export default function HeroBanner() {
     <section
       className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: 'url("https://eventmundi.com.br/wp-content/uploads/2023/08/champions-league.webp")',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundImage:
+          'url("https://eventmundi.com.br/wp-content/uploads/2023/08/champions-league.webp")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <div className="absolute inset-0 bg-[#000000a8] bg-opacity-60 z-10" />
@@ -56,7 +62,7 @@ export default function HeroBanner() {
           initial="initial"
           animate="animate"
           exit="exit"
-          style={{ fontSize: "3.5rem" }}
+          style={{ fontSize: '3.5rem' }}
         >
           {texts[index]}
         </motion.h1>

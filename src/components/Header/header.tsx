@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "@/public/FellipeBet.png";
-import LoginButton from "@/src/components/LoginButton/button";
-import { useSession } from "@/src/contexts/SessionContext";
-import ProfileMenu from "../ProfileMenu";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from '@/public/FellipeBet.png';
+import LoginButton from '@/src/components/LoginButton/button';
+import { useSession } from '@/src/contexts/SessionContext';
+import ProfileMenu from '../ProfileMenu';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const { session } = useSession();
   const router = useRouter();
 
   const redirectHome = () => {
-    router.push("/home");
+    router.push('/home');
   };
 
   return (
@@ -31,14 +31,23 @@ const Header = () => {
                 className="cursor-pointer px-3 py-2 rounded-sm text-gray-100 font-extralight"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.8 }}
-                transition={{ type: "spring", stiffness: "80" }}
+                transition={{ type: 'spring', stiffness: '80' }}
                 onClick={() => redirectHome()}
               >
                 Home
               </motion.button>
             )}
           </li>
-          <li>{session ? <ProfileMenu imageUrl={session.user?.image} userName={session.user?.name} /> : <LoginButton session={session} />}</li>
+          <li>
+            {session ? (
+              <ProfileMenu
+                imageUrl={session.user?.image}
+                userName={session.user?.name}
+              />
+            ) : (
+              <LoginButton session={session} />
+            )}
+          </li>
         </ul>
       </div>
     </header>

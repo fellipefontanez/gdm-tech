@@ -1,5 +1,5 @@
-"use client";
-import { useState, useEffect } from "react";
+'use client';
+import { useState, useEffect } from 'react';
 
 interface TimerProps {
   startTime: string;
@@ -64,7 +64,7 @@ const Timer: React.FC<TimerProps> = ({ startTime }) => {
   const renderTimeBox = (value: number, label: string) => (
     <div className="flex flex-col items-center mx-1">
       <div className="bg-white/90 text-gray-900 font-bold text-xl rounded-lg py-2 px-3 min-w-[3rem] text-center shadow-sm border border-gray-200">
-        {String(value).padStart(2, "0")}
+        {String(value).padStart(2, '0')}
       </div>
       <span className="text-sm text-gray-500 mt-1">{label}</span>
     </div>
@@ -77,21 +77,30 @@ const Timer: React.FC<TimerProps> = ({ startTime }) => {
     </div>
   );
 
-  const renderCountdown = (timeLeft: { days: number; hours: number; minutes: number; seconds: number }) => (
+  const renderCountdown = (timeLeft: {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  }) => (
     <div className="text-center">
       <h4 className="text-lg text-gray-500 mb-2">A partida começa em:</h4>
       <div className="flex justify-center items-center">
-        {timeLeft.days > 0 && renderTimeBox(timeLeft.days, "Dias")}
-        {renderTimeBox(timeLeft.hours, "Horas")}
-        {renderTimeBox(timeLeft.minutes, "Min")}
-        {timeLeft.days === 0 && renderTimeBox(timeLeft.seconds, "Seg")}
+        {timeLeft.days > 0 && renderTimeBox(timeLeft.days, 'Dias')}
+        {renderTimeBox(timeLeft.hours, 'Horas')}
+        {renderTimeBox(timeLeft.minutes, 'Min')}
+        {timeLeft.days === 0 && renderTimeBox(timeLeft.seconds, 'Seg')}
       </div>
     </div>
   );
 
   const renderContent = () => {
     if (timeLeft.isOver) {
-      return <div className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-medium">Partida encerrada</div>;
+      return (
+        <div className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-medium">
+          Partida encerrada
+        </div>
+      );
     }
     if (timeLeft.hasStarted) {
       return renderStartedMatch();

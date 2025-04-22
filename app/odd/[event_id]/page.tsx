@@ -1,7 +1,7 @@
-import React from "react";
-import { getDetailsSSR } from "./util/fetchDetails";
-import OddDetails from "@/src/components/OddDetails/OddDetalhada";
-import { Loader } from "@/src/components/Loader/Loader";
+import React from 'react';
+import { getDetailsSSR } from './util/fetchDetails';
+import OddDetails from '@/src/components/OddDetails/OddDetalhada';
+import { Loader } from '@/src/components/Loader/Loader';
 
 interface PageProps {
   params: Promise<any>;

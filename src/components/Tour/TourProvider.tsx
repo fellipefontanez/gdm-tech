@@ -1,6 +1,6 @@
-"use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Step } from "./types/types";
+'use client';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Step } from './types/types';
 
 type TourContextType = {
   steps: Step[];
@@ -38,13 +38,26 @@ export function TourProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  return <TourContext.Provider value={{ steps, currentStepIndex, nextStep, prevStep, isTourOpen, startTour }}>{children}</TourContext.Provider>;
+  return (
+    <TourContext.Provider
+      value={{
+        steps,
+        currentStepIndex,
+        nextStep,
+        prevStep,
+        isTourOpen,
+        startTour,
+      }}
+    >
+      {children}
+    </TourContext.Provider>
+  );
 }
 
 export const useTour = (): TourContextType => {
   const context = useContext(TourContext);
   if (!context) {
-    throw new Error("useTour must be used within a TourProvider");
+    throw new Error('useTour must be used within a TourProvider');
   }
   return context;
 };

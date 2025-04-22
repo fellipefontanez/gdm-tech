@@ -1,15 +1,28 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { Phone, MapPin, Mail } from "lucide-react";
-import { footer, holder, infoEmpresa } from "./style";
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Phone, MapPin, Mail } from 'lucide-react';
+import { footer, holder, infoEmpresa } from './style';
 
 const Footer = () => {
   return (
-    <motion.footer style={footer} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+    <motion.footer
+      style={footer}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <div style={holder}>
-        <div className="flex justify-between gap-10 flex-wrap" style={infoEmpresa}>
-          <motion.div className="flex flex-col gap-4" initial={{ x: -50 }} animate={{ x: 0 }} transition={{ duration: 0.5 }}>
+        <div
+          className="flex justify-between gap-10 flex-wrap"
+          style={infoEmpresa}
+        >
+          <motion.div
+            className="flex flex-col gap-4"
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <p className="font-bold text-2xl">FellipeBet</p>
             <div className="flex items-center gap-2">
               <MapPin size={20} />
@@ -25,18 +38,39 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          <motion.div className="flex flex-col gap-4" initial={{ x: 50 }} animate={{ x: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div
+            className="flex flex-col gap-4"
+            initial={{ x: 50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <p className="font-bold text-2xl">Advertência</p>
-            <p>Apostas podem causar dependência. Aposte com responsabilidade. Somente maiores de 18 anos podem participar.</p>
+            <p>
+              Apostas podem causar dependência. Aposte com responsabilidade.
+              Somente maiores de 18 anos podem participar.
+            </p>
           </motion.div>
 
-          <motion.div className="flex flex-col gap-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.25 }}>
+          <motion.div
+            className="flex flex-col gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
             <p className="font-bold text-2xl">Sobre o Projeto</p>
-            <p>Este é um projeto pessoal de Fellipe Fontanez. Não é um site real de apostas.</p>
+            <p>
+              Este é um projeto pessoal de Fellipe Fontanez. Não é um site real
+              de apostas.
+            </p>
           </motion.div>
         </div>
 
-        <motion.div className="text-center mt-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>
+        <motion.div
+          className="text-center mt-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
           <p>&copy; 2025 FellipeBet LTDA. Todos os direitos reservados.</p>
         </motion.div>
       </div>

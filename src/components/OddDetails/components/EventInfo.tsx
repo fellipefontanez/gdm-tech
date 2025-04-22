@@ -4,7 +4,7 @@ interface EventInfoProps {
 }
 
 const EventInfo: React.FC<EventInfoProps> = ({ name, startTime }) => {
-  const date = new Date(startTime).toLocaleString("pt-BR");
+  const date = new Date(startTime).toLocaleString('pt-BR');
 
   return (
     <div className="bg-gray-900 p-6 rounded-lg w-800px h-fit @md:max-w-full border-l-4 border-[#016ca5]">
