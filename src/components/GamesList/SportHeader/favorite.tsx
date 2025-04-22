@@ -6,9 +6,10 @@ import React from "react";
 
 interface FavoriteButtonProps {
   esporte: string;
+  index: number;
 }
 
-const FavoriteButton = ({ esporte }: FavoriteButtonProps) => {
+const FavoriteButton = ({ esporte, index }: FavoriteButtonProps) => {
   const { data: session } = useSession();
   const { cachedData, addFavorite, removeFavorite } = useFavoritosContext();
 
@@ -27,7 +28,7 @@ const FavoriteButton = ({ esporte }: FavoriteButtonProps) => {
   return (
     <button
       onClick={toggleFavorite}
-      className="p-2 focus:outline-none transition-colors duration-200"
+      className={"p-2 focus:outline-none transition-colors duration-200" + (index === 0) ? "forth-step" : ""}
       aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
     >
       <svg

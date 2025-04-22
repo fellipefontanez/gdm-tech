@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSession } from "next-auth/react";
+import Joyride from "react-joyride";
+import { steps, styles } from "./steps";
 
 export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }) {
   const [show, setShow] = useState(false);
+  const [run, setRun] = useState(false);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -16,6 +19,7 @@ export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }
 
   const handleClose = async () => {
     setShow(false);
+    setRun(true);
     await fetch("/api/user/onboarded", { method: "POST" });
   };
 
@@ -25,6 +29,23 @@ export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }
 
   return (
     <AnimatePresence>
+      <Joyride
+        steps={steps}
+        run={run}
+        continuous={true}
+        scrollToFirstStep={false}
+        disableScrolling={true}
+        showProgress={false}
+        showSkipButton={false}
+        locale={{
+          back: "Voltar",
+          close: "Fechar",
+          last: "Finalizar",
+          next: "Próximo",
+          skip: "Pular",
+        }}
+        styles={styles}
+      />
       {show && (
         <motion.div
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
