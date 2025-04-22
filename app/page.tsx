@@ -9,6 +9,7 @@ export default function Home() {
       <HeroBanner />
       <FeatureCards />
       <SecuritySection />
+      <Footer />
     </section>
   );
 }
