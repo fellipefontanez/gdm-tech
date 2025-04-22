@@ -24,18 +24,20 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <p className="font-bold text-2xl">FellipeBet</p>
-            <div className="flex items-center gap-2">
-              <MapPin size={20} />
-              <p>Rua das Apostas, 123, Centro, São Paulo, SP</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone size={20} />
-              <p>(11) 1234-5678</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail size={20} />
-              <p>contato@fellipebet.com</p>
-            </div>
+            <address className="flex flex-col items-start gap-2">
+              <div className="flex items-center gap-2">
+                <MapPin size={20} />
+                <p>Rua das Apostas, 123, Centro, São Paulo, SP</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={20} />
+                <p>(11) 1234-5678</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail size={20} />
+                <p>contato@fellipebet.com</p>
+              </div>
+            </address>
           </motion.div>
 
           <motion.div

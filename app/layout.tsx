@@ -24,6 +24,21 @@ export default async function RootLayout({
         <meta name="theme-color" content="#016ca5" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
+          name="description"
+          content="Apostas esportivas em tempo real. Aposte com inteligência e ganhe com confiança!"
+        />
+        <meta
+          name="keywords"
+          content="apostas esportivas, futebol, apostas ao vivo, pagamentos rápidos"
+        />
+        <meta property="og:title" content="FellipeBet - Apostas Esportivas" />
+        <meta
+          property="og:description"
+          content="Aposte ao vivo e aproveite os melhores palpites e estatísticas!"
+        />
+        <meta property="og:url" content="https://www.fellipebet.com" />
+        <meta name="robots" content="index, follow" />
+        <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
