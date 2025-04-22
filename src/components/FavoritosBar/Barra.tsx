@@ -20,7 +20,7 @@ const BarraDeFavoritos = () => {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={`${
           isMobile ? "flex w-[100vw] md:hidden top-[105px] h-20" : "hidden rounded-r-md md:flex top-1/2 h-20"
-        } items-center justify-center z-50 fixed left-0 transform -translate-y-1/2 bg-[#1e293b] text-white overflow-hidden`}
+        } items-center justify-center z-40 fixed left-0 transform -translate-y-1/2 bg-[#1e293b] text-white overflow-hidden`}
       >
         {isMobile ? (
           isOpen ? (
