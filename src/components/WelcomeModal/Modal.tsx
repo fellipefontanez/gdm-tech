@@ -12,8 +12,6 @@ export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }
   const { startTour } = useTour();
 
   useEffect(() => {
-    startTour(steps);
-
     if (!hasOnboarded && session?.user) {
       setShow(true);
     }
