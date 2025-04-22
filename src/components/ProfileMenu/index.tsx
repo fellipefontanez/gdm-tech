@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { memo, useState, useCallback, useRef, useEffect } from "react";
-import { signOut } from "next-auth/react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { memo, useState, useCallback, useRef, useEffect } from 'react';
+import { signOut } from 'next-auth/react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ProfileMenuProps {
   imageUrl: string | null | undefined;
@@ -14,7 +14,7 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
   const closeMenu = useCallback(() => setIsOpen(false), []);
 
   useEffect(() => {
@@ -23,8 +23,8 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
         closeMenu();
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [closeMenu]);
 
   return (
@@ -35,10 +35,16 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
         aria-label="Abrir menu do perfil"
         aria-expanded={isOpen}
         whileHover={{ scale: 1.1 }}
-        transition={{ type: "tween" }}
+        transition={{ type: 'tween' }}
         whileTap={{ scale: 0.95, opacity: 0.9 }}
       >
-        <Image src={imageUrl ?? ""} alt={userName ?? "Perfil"} width={40} height={40} className="rounded-full object-cover w-full h-full" />
+        <Image
+          src={imageUrl ?? ''}
+          alt={userName ?? 'Perfil'}
+          width={40}
+          height={40}
+          className="rounded-full object-cover w-full h-full"
+        />
       </motion.button>
 
       <AnimatePresence>
@@ -49,16 +55,16 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
               opacity: 0,
               scaleY: 0,
               y: -15,
-              clipPath: "inset(0 0 100% 0 round 12px)",
-              transformOrigin: "top center",
+              clipPath: 'inset(0 0 100% 0 round 12px)',
+              transformOrigin: 'top center',
             }}
             animate={{
               opacity: 1,
               scaleY: 1,
               y: 0,
-              clipPath: "inset(0 0 0% 0 round 12px)",
+              clipPath: 'inset(0 0 0% 0 round 12px)',
               transition: {
-                type: "spring",
+                type: 'spring',
                 stiffness: 300,
                 damping: 25,
               },
@@ -67,7 +73,7 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
               opacity: 0,
               scaleY: 0.8,
               y: -10,
-              clipPath: "inset(0 0 100% 0 round 12px)",
+              clipPath: 'inset(0 0 100% 0 round 12px)',
               transition: { duration: 0.2 },
             }}
           >
@@ -76,11 +82,11 @@ const ProfileMenu = ({ imageUrl, userName }: ProfileMenuProps) => {
             </p>
             <hr className="border-t border-gray-200 mt-0.5 mb-2" />
             <motion.button
-              onClick={() => signOut({redirect: true, callbackUrl: "/"})}
+              onClick={() => signOut({ redirect: true, callbackUrl: '/' })}
               className="self-end block w-min text-left px-4 py-2 text-sm text-black cursor-pointer font-medium rounded hover:bg-red-50 transition-colors duration-200"
-              whileHover={{scale: 1.05}}
-              whileTap={{scale:.9, opacity:.85}}
-              transition={{type: 'spring', stiffness: 300}}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.9, opacity: 0.85 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               Sair
             </motion.button>

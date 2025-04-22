@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import notFound from "@/public/not-found-user.png";
-import Button from "@/src/components/SimpleButton/button";
-import { useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
-import { useSession } from "@/src/contexts/SessionContext";
+import React, { useCallback, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import notFound from '@/public/not-found-user.png';
+import Button from '@/src/components/SimpleButton/button';
+import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+import { useSession } from '@/src/contexts/SessionContext';
 
 const ClienteNaoLogadoPage = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const ClienteNaoLogadoPage = () => {
   }, [session]);
 
   const redirecionarHome = () => {
-    router.push("/");
+    router.push('/');
   };
 
   return (
@@ -29,9 +29,19 @@ const ClienteNaoLogadoPage = () => {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.4, ease: [0.4, 0.1, 0.2, 1] }}
       >
-        <Image src={notFound} alt="Usuário não encontrado" width={100} height={100} className="mb-2" />
-        <h1 className="text-center text-lg font-semibold text-gray-800">Poxa, tivemos um problema em identificar sua sessão</h1>
-        <p className="text-center text-sm text-gray-600">Por favor, volte para a tela inicial e tente novamente.</p>
+        <Image
+          src={notFound}
+          alt="Usuário não encontrado"
+          width={100}
+          height={100}
+          className="mb-2"
+        />
+        <h1 className="text-center text-lg font-semibold text-gray-800">
+          Poxa, tivemos um problema em identificar sua sessão
+        </h1>
+        <p className="text-center text-sm text-gray-600">
+          Por favor, volte para a tela inicial e tente novamente.
+        </p>
         <Button style="solid" action={redirecionarHome}>
           Voltar ao início
         </Button>

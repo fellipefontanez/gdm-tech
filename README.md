@@ -17,3 +17,4 @@ Para rodar o ambiente de desenvolvimento, utilize o comando abaixo. Isso irá co
 
 ```bash
 docker-compose -f docker-compose.dev.yml up --build
+```

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useFavoritosContext } from "@/src/contexts/FavoritosContext";
-import { useSession } from "next-auth/react";
-import React from "react";
+import { useFavoritosContext } from '@/src/contexts/FavoritosContext';
+import { useSession } from 'next-auth/react';
+import React from 'react';
 
 interface FavoriteButtonProps {
   esporte: string;
@@ -28,14 +28,20 @@ const FavoriteButton = ({ esporte, index }: FavoriteButtonProps) => {
   return (
     <button
       onClick={toggleFavorite}
-      className={"p-2 focus:outline-none transition-colors duration-200" + (index === 0) ? "forth-step" : ""}
-      aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+      className={
+        'p-2 focus:outline-none transition-colors duration-200' + (index === 0)
+          ? 'forth-step'
+          : ''
+      }
+      aria-label={
+        isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
+      }
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill={isFavorite ? "#FFD700" : "none"}
-        stroke={isFavorite ? "#FFD700" : "currentColor"}
+        fill={isFavorite ? '#FFD700' : 'none'}
+        stroke={isFavorite ? '#FFD700' : 'currentColor'}
         strokeWidth="2"
         className="w-6 h-6 transition-all duration-300 hover:scale-110"
       >

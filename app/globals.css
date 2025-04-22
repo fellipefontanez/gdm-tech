@@ -1,6 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "./normalize.css";
+@import './normalize.css';
 
 :root {
   --background: #e3e3e3;
@@ -11,7 +11,9 @@
 .tour-highlight {
   position: relative;
   z-index: 9998;
-  box-shadow: 0 0 0 4px #2563eb, 0 0 12px rgba(37, 99, 235, 0.6);
+  box-shadow:
+    0 0 0 4px #2563eb,
+    0 0 12px rgba(37, 99, 235, 0.6);
   border-radius: 8px;
   transition: box-shadow 0.3s ease-in-out;
 }
