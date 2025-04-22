@@ -65,7 +65,7 @@ Certifique-se de que você tenha instalado em sua máquina:
 ```
 gdm-tech/
 ├── components/         # Componentes reutilizáveis
-├── pages/              # Rotas da aplicação (Next.js)
+├── app/                # Rotas da aplicação (Next.js)
 ├── public/             # Arquivos estáticos
 ├── styles/             # Estilos globais
 ├── lib/                # Conexão com MongoDB, autenticação etc.
