@@ -16,7 +16,13 @@ jobs:
 
       - name: Configurar secrets como .env temporário
         run: |
-          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env.production
+          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env.production
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env.production
+          echo "GITHUB_CLIENT_ID=${{ secrets.GH_CLIENT_ID }}" >> .env.production
+          echo "GITHUB_CLIENT_SECRET=${{ secrets.GH_CLIENT_SECRET }}" >> .env.production
+          echo "RAPIDAPI_KEY=${{ secrets.RAPIDAPI_KEY }}" >> .env.production
+          echo "BASE_URL_SERVIDOR=${{ secrets.BASE_URL_SERVIDOR }}" >> .env.production
+          echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env.production
 
       - name: Build Docker image
         run: docker build -f Dockerfile.prod -t gdm-tech .
