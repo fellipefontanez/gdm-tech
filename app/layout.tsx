@@ -8,6 +8,7 @@ import "./globals.css";
 import { getUserOnboarding } from "@/src/util/getUserOnboarding";
 import { OnboardingProvider } from "@/src/contexts/OnboardingContext";
 import WelcomeModal from "@/src/components/WelcomeModal/Modal";
+import Footer from "@/src/components/Footer/Footer";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { session, hasOnboarded } = await getUserOnboarding();
@@ -28,7 +29,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   <WelcomeModal hasOnboarded={hasOnboarded} />
                   <GlobalLoader />
                   <Header />
-                  <main className="relative pt-[74px]">{children}</main>
+                  <main className="relative pt-[74px]">
+                    {children}
+                    <Footer />
+                  </main>
                 </OnboardingProvider>
               </LoaderProvider>
             </FavoritosProvider>
