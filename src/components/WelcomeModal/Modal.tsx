@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSession } from "next-auth/react";
+import { useTour } from "../Tour/TourProvider";
+import { steps } from "./steps";
 
 export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }) {
   const [show, setShow] = useState(false);
   const { data: session } = useSession();
+  const { startTour } = useTour();
 
   useEffect(() => {
     if (!hasOnboarded && session?.user) {
@@ -17,6 +20,7 @@ export default function WelcomeModal({ hasOnboarded }: { hasOnboarded: boolean }
   const handleClose = async () => {
     setShow(false);
     await fetch("/api/user/onboarded", { method: "POST" });
+    startTour(steps);
   };
 
   const fechar = (e: React.MouseEvent) => {

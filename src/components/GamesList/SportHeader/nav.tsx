@@ -5,11 +5,12 @@ import FavoriteButton from "./favorite";
 
 interface SportNavProps {
   esporte: string;
-  action: ()=>any;
+  action: () => any;
   routeParam: string;
+  index: number;
 }
 
-const SportNav = ({ esporte, action, routeParam }: SportNavProps) => {
+const SportNav = ({ esporte, action, routeParam, index }: SportNavProps) => {
   return (
     <motion.nav
       initial={{ opacity: 0, x: 20 }}
@@ -18,7 +19,7 @@ const SportNav = ({ esporte, action, routeParam }: SportNavProps) => {
       className="bg-blue-900 pl-2 text-white font-semibold font-sans flex justify-between items-center w-full"
     >
       <h3 className="italic text-2xl tracking-widest cursor-default flex items-center gap-1">
-        <FavoriteButton esporte={esporte} />
+        <FavoriteButton index={index} esporte={esporte} />
         {esporte}
       </h3>
       <motion.div

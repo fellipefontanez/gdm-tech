@@ -8,6 +8,8 @@ import "./globals.css";
 import { getUserOnboarding } from "@/src/util/getUserOnboarding";
 import { OnboardingProvider } from "@/src/contexts/OnboardingContext";
 import WelcomeModal from "@/src/components/WelcomeModal/Modal";
+import { TourProvider } from "@/src/components/Tour/TourProvider";
+import { TourOverlay } from "@/src/components/Tour/TourOverlay";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { session, hasOnboarded } = await getUserOnboarding();
@@ -25,10 +27,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <FavoritosProvider>
               <LoaderProvider>
                 <OnboardingProvider hasOnboarded={hasOnboarded}>
-                  <WelcomeModal hasOnboarded={hasOnboarded} />
-                  <GlobalLoader />
-                  <Header />
-                  <main className="relative pt-[74px]">{children}</main>
+                  <TourProvider>
+                    <TourOverlay />
+                    <WelcomeModal hasOnboarded={hasOnboarded} />
+                    <GlobalLoader />
+                    <Header />
+                    <main className="relative pt-[74px]">{children}</main>
+                  </TourProvider>
                 </OnboardingProvider>
               </LoaderProvider>
             </FavoritosProvider>

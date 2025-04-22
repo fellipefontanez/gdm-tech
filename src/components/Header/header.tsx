@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="w-full flex justify-center fixed z-50">
       <div className="flex flex-row justify-between py-4 md:w-[70%] w-[95%]">
-        <Link href="/">
+        <Link href="/" className="second-step">
           <Image src={logo} alt="FellipeBet" width={120} height={40} priority />
         </Link>
         <ul className="flex items-center gap-10">

@@ -71,11 +71,11 @@ const GamesList = ({ data }: Props) => {
   return (
     <>
       <section className="flex flex-col w-full max-w-[700px] gap-3">
-        {filtrarEOrdenarEsportes(lista, favoritos, showOnlyFavCategories).map(([esporte, vantagens]) => {
+        {filtrarEOrdenarEsportes(lista, favoritos, showOnlyFavCategories).map(([esporte, vantagens], i) => {
           const esporteFormatado = formatName(esporte);
           return (
-            <section key={esporte} className="w-full">
-              <SportNav esporte={esporteFormatado} action={() => redirecionarRotaEsporte(esporte)} routeParam={sportParam ?? ""} />
+            <section key={esporte} className={"w-full" + (i === 0) ? "third-step" : ""}>
+              <SportNav esporte={esporteFormatado} action={() => redirecionarRotaEsporte(esporte)} routeParam={sportParam ?? ""} index={i} />
               <motion.ul className="flex flex-col gap-2 mt-2" variants={containerVariants} initial="hidden" animate="show">
                 {vantagens.length ? (
                   vantagens.map((vantagem, index) => {
@@ -84,7 +84,7 @@ const GamesList = ({ data }: Props) => {
                       <motion.li
                         key={context.eventKey}
                         variants={itemVariants}
-                        className={`p-3 rounded-md ${index % 2 === 0 ? "bg-white" : "bg-gray-100"}`}
+                        className={`p-3 rounded-md ${index % 2 === 0 ? "bg-white" : "bg-gray-100"} ${i === 0 && "fifth-step"}`}
                         whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px 4px gray", cursor: "pointer" }}
                         whileTap={{ scale: 1 }}
                         transition={{ duration: 0.3 }}

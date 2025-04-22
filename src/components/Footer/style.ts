@@ -3,7 +3,6 @@ export const footer = {
     color: "#fff",
     padding: "40px 0",
     fontSize: "14px",
-    marginTop: "50px",
 }
 
 export const holder = { maxWidth: "1200px", margin: "0 auto", padding: "0 20px" };
