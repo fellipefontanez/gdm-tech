@@ -19,4 +19,4 @@ jobs:
           echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env.production
 
       - name: Build Docker image
-        run: docker build -t meu-app .
+        run: docker build -f Dockerfile.prod -t gdm-tech .
