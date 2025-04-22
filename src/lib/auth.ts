@@ -10,12 +10,14 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         async jwt({ token, account }) {
+            console.log("JWT callback", { account });
             if (account) {
                 token.accessToken = account.access_token;
             }
             return token;
         },
         async session({ session, token }) {
+            console.log("Session callback", { token });
             session.accessToken = token.accessToken as string;
             return session;
         },

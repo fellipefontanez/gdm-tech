@@ -14,6 +14,8 @@ export async function middleware(request: NextRequest) {
     if (PUBLIC_ROUTES_REGEX.test(pathname)) return NextResponse.next();
 
     const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+    console.log("Middleware pathname:", pathname);
+    console.log("Token", token);
 
     if (!token) {
         const url = request.nextUrl.clone();
@@ -26,6 +28,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
     matcher: [
-        '/((?!api|_next|favicon.ico|login|register|cliente-nao-autenticado|public).*)',
+        '/((?!^/api|^/_next|^/favicon.ico|^/login|^/register|^/cliente-nao-autenticado|^/public).*)',
     ],
 };
+
